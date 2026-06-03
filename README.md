@@ -26,25 +26,25 @@ npm install -D vite-plugin-tiny-spa
 
 ```ts
 // vite.config.ts
-import { defineConfig } from 'vite'
-import { tinySpa } from 'vite-plugin-tiny-spa'
+import { defineConfig } from "vite";
+import { tinySpa } from "vite-plugin-tiny-spa";
 
 export default defineConfig({
   plugins: [
     tinySpa({
       cdn: {
-        origin: 'https://esm.sh',
-        query: { target: 'es2022' },
+        origin: "https://esm.sh",
+        query: { target: "es2022" },
       },
     }),
   ],
-})
+});
 ```
 
 Build output defaults to a single `index.html`. The inlined module can still import CDN dependencies:
 
 ```js
-import { highlight } from 'https://esm.sh/sugar-high@1.2.1?target=es2022'
+import { highlight } from "https://esm.sh/sugar-high@1.2.1?target=es2022";
 ```
 
 Upload that `index.html` to your ESP32 filesystem and serve it with `text/html`.
@@ -54,12 +54,12 @@ Upload that `index.html` to your ESP32 filesystem and serve it with `text/html`.
 ```ts
 tinySpa({
   cdn: {
-    origin: 'https://esm.sh',
-    packages: ['sugar-high'],        // default: package.json dependencies
-    include: ['lodash-es'],          // add to defaults
-    exclude: ['@private/package'],   // keep bundled
-    pinVersions: true,               // default: true
-    query: { target: 'es2022' },
+    origin: "https://esm.sh",
+    packages: ["sugar-high"], // default: package.json dependencies
+    include: ["lodash-es"], // add to defaults
+    exclude: ["@private/package"], // keep bundled
+    pinVersions: true, // default: true
+    query: { target: "es2022" },
   },
   singleFile: {
     inlineScripts: true,
@@ -69,14 +69,14 @@ tinySpa({
     strict: true,
     disableCodeSplitting: true,
   },
-})
+});
 ```
 
 Disable either half when needed:
 
 ```ts
-tinySpa({ cdn: false })        // 📄 one HTML file, no CDN rewriting
-tinySpa({ singleFile: false }) // 🌐 CDN rewriting only
+tinySpa({ cdn: false }); // 📄 one HTML file, no CDN rewriting
+tinySpa({ singleFile: false }); // 🌐 CDN rewriting only
 ```
 
 ## 🚢 Production notes

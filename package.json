@@ -57,5 +57,8 @@
   },
   "dependencies": {
     "mrmime": "^2.0.1"
-  }
+  },
+  "workspaces": [
+    "examples/vite-react"
+  ]
 }
