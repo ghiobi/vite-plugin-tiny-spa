@@ -1,0 +1,61 @@
+{
+  "name": "vite-plugin-tiny-spa",
+  "private": false,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf dist playground-dist",
+    "build:plugin": "tsc -p tsconfig.plugin.json",
+    "build:fixture": "vite build --config tests/fixtures/basic/vite.config.ts",
+    "build": "npm run clean && npm run build:plugin",
+    "typecheck": "tsc -p tsconfig.node.json --noEmit && tsc -p tsconfig.plugin.json --noEmit",
+    "lint": "eslint .",
+    "test": "npm run build && npm run build:fixture && node scripts/assert-tiny-spa-build.mjs",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.12.3",
+    "eslint": "^10.3.0",
+    "globals": "^17.6.0",
+    "sugar-high": "^1.2.1",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^8.0.12"
+  },
+  "description": "Vite plugin for shipping tiny single-file SPAs with CDN-hosted ESM dependencies.",
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "single-html",
+    "single-file",
+    "singlefile",
+    "spa",
+    "cdn",
+    "esm",
+    "esm.sh",
+    "embedded",
+    "esp32",
+    "iot",
+    "static",
+    "html",
+    "inline-assets"
+  ],
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/plugin/index.d.ts",
+      "import": "./dist/plugin/index.js"
+    }
+  },
+  "types": "./dist/plugin/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "vite": "^8.0.0"
+  },
+  "dependencies": {
+    "mrmime": "^2.0.1"
+  }
+}
