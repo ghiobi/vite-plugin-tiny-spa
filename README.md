@@ -2,7 +2,7 @@
 
 🚀 Ship a Vite SPA as **one tiny `index.html`** while loading selected npm packages from an ESM CDN like [esm.sh](https://esm.sh/).
 
-Perfect for **ESP32 dashboards**, small device admin panels, captive portals, and any static target where a full Vite asset folder is too bloated for limited disk.
+Perfect for **ESP32 dashboards**, small device admin panels, captive portals, and any static target where a full Vite asset folder is too bloated for limited disk. Or you're just trying to send a single index.html file over to your friend!
 
 ## ✨ What you get
 
@@ -30,24 +30,11 @@ import { defineConfig } from "vite";
 import { tinySpa } from "vite-plugin-tiny-spa";
 
 export default defineConfig({
-  plugins: [
-    tinySpa({
-      cdn: {
-        origin: "https://esm.sh",
-        query: { target: "es2022" },
-      },
-    }),
-  ],
+  plugins: [tinySpa()],
 });
 ```
 
 Build output defaults to a single `index.html`. The inlined module can still import CDN dependencies:
-
-```js
-import { highlight } from "https://esm.sh/sugar-high@1.2.1?target=es2022";
-```
-
-Upload that `index.html` to your ESP32 filesystem and serve it with `text/html`.
 
 ## 🧩 Options
 
